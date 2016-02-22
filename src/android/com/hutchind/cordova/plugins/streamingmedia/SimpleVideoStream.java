@@ -1,5 +1,24 @@
 package com.hutchind.cordova.plugins.streamingmedia;
 
+
+
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.LOG;
+import org.apache.cordova.PluginResult;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.telephony.TelephonyManager;
+import android.view.KeyEvent;
+
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -186,4 +205,22 @@ public class SimpleVideoStream extends Activity implements
 			mMediaController.show();
 		return false;
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+    //If volume down key
+ //   @Override
+ //   	if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+ //       	this.loadUrl("javascript:cordova.fireDocumentEvent('volumedownbutton');");
+ //       	return true;
+ //   	} else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+ //       	this.loadUrl("javascript:cordova.fireDocumentEvent('volumeupbutton');");
+ //       	return true;
+ //   	} else {
+ //       	//return super.onKeyDown(keyCode, event); 
+ //   	}
+ //   	//return super.onKeyDown(keyCode, event);
+	
+ //   	return true;
+	// }
 }
