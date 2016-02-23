@@ -68,11 +68,7 @@ public class SimpleVideoStream extends Activity implements
 		mVideoView = new VideoView(this);
 		mVideoView.setLayoutParams(relLayoutParam);
 		relLayout.addView(mVideoView);
-		mVideoview.setOnclickListener(new OnclickListener() {
-			public void onClick(View view) {
-				webview.loadUrl("javascript:cordova.fireDocumentEvent('cool')")
-			}
-		});
+		
 		
 		// Create progress throbber
 		mProgressBar = new ProgressBar(this);
@@ -99,9 +95,21 @@ public class SimpleVideoStream extends Activity implements
 			mVideoView.setOnErrorListener(this);
 			mVideoView.setVideoURI(videoUri);
 			mMediaController = new MediaController(this);
+			
+			public boolean idpatchKeyEvent(KeyEvent event) {
+				if (event.getKeyCode() == KeyEvent.KEYCODE_VOLUME_UP) {
+					mVideoView.loadUrl("javascript:cordova.fireDocumentEvent('vol')");
+					return super.dispatchKeyEvent(event);
+				}
+				// webview.loadUrl("javascript:cordova.fireDocumentEvent('cool')")
+			};
+	
 			mMediaController.setAnchorView(mVideoView);
 			mMediaController.setMediaPlayer(mVideoView);
 			mVideoView.setMediaController(mMediaController);
+			mVideoview.setOnclickListener(new OnclickListener() {
+			
+		});
 		} catch (Throwable t) {
 			Log.d(TAG, t.toString());
 		}
