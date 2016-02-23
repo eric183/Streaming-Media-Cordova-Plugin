@@ -68,7 +68,12 @@ public class SimpleVideoStream extends Activity implements
 		mVideoView = new VideoView(this);
 		mVideoView.setLayoutParams(relLayoutParam);
 		relLayout.addView(mVideoView);
-
+		mVideoview.setOnclickListener(new OnclickListener() {
+			public void onClick(View view) {
+				webview.loadUrl("javascript:cordova.fireDocumentEvent('cool')")
+			}
+		});
+		
 		// Create progress throbber
 		mProgressBar = new ProgressBar(this);
 		mProgressBar.setIndeterminate(true);
@@ -81,7 +86,7 @@ public class SimpleVideoStream extends Activity implements
 		mProgressBar.bringToFront();
 
 		setContentView(relLayout, relLayoutParam);
-
+		
 		play();
 	}
 
